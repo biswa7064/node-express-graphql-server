@@ -6,38 +6,14 @@ import { json } from "body-parser"
 import http from "http"
 import cors from "cors"
 import rootRoute from "../routes"
-
-const books = [
-	{
-		title: "The Awakening",
-		author: "Kate Chopin",
-	},
-	{
-		title: "City of Glass",
-		author: "Paul Auster",
-	},
-]
-
-const typeDefs = `#graphql
-type Book{
-    title: String
-    author: String
-}
-type Query{
-    books: [Book]
-}
-`
-const resolvers = {
-	Query: {
-		books: () => books,
-	},
-}
+import typeDefs from "./schemas"
+import rootResolver from "./resolvers"
 
 async function startServer(app: Express, port: number) {
 	const httpServer = http.createServer(app)
 	const apolloServer = new ApolloServer({
 		typeDefs,
-		resolvers,
+		resolvers: rootResolver,
 		introspection: process.env.NODE_ENV !== "production",
 		plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 	})

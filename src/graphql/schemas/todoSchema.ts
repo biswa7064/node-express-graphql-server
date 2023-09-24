@@ -1,6 +1,6 @@
 import { buildSchema } from "graphql"
 
-const todoSchema = buildSchema(`
+const todoSchema = `#graphql
 type TodoType{
     id:Int!
     title:String!
@@ -20,9 +20,9 @@ type CartItems{
 }
 
 type Query{
-    todoTitles : [TodoType]
+    todoItems : [TodoType]
     cartItems(userId:String!):[CartItems]
 }
-`)
+`
 
 export default todoSchema

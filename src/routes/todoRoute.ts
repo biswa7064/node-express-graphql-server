@@ -5,7 +5,7 @@ import todoSchema from "../graphql/schemas/todoSchema"
 import { getTodoResolver } from "../graphql/resolvers/todoResolver"
 
 const todoRoute = async (
-	req: Request,
+	_: Request,
 	res: Response,
 	todoController: TodoController
 ): Promise<void> => {
@@ -13,10 +13,6 @@ const todoRoute = async (
 	const rootValue = {
 		todoTitles: getTodoResolver(resp?.data),
 	}
-	return await graphqlHTTP({
-		schema: todoSchema,
-		graphiql: true,
-		rootValue,
-	})(req, res)
+	res.json(rootValue)
 }
 export default todoRoute

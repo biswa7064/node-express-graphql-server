@@ -5,7 +5,6 @@ type Hotel{
     price:String
     ratings:Int
     image:String
-    rooms:Int
 }
 
 

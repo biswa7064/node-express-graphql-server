@@ -1,9 +1,9 @@
 import fs from "fs"
+import { getUtf8DataFromDataDirUsingFS } from "../utils"
 export class HotelController {
 	getHotelsData = async () => {
 		try {
-			const data = fs.readFileSync("__data__/hotelsData.json", "utf8")
-			const result = JSON.parse(data)
+			const result = await getUtf8DataFromDataDirUsingFS("hotelsData.json")
 			return result
 		} catch (err) {
 			throw err

@@ -1,4 +1,4 @@
-import { HotelController } from "../../controllers/hotelsController"
+import { HotelController } from "../../controllers"
 
 const hotelsController = new HotelController()
 const hotelsResolver = {

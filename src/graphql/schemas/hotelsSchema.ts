@@ -7,6 +7,17 @@ type Hotel{
     image:String
 }
 
+type RoomService{
+    serviceID:String!
+    name:String!
+}
+
+type HotelRoom{
+    roomNumber:Int!
+    roomID:String!
+    services:[RoomService]
+}
+
 
 type Query{
     hotels:[Hotel]

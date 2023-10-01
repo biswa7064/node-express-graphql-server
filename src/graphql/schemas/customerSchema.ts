@@ -8,6 +8,7 @@ type Customer{
 
 type Query{
     customers:[Customer]
+    customerByID(cID:String!):Customer
 }
 `
 

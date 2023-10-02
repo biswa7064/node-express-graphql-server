@@ -3,7 +3,7 @@ type Hotel{
     hotelID:String!
     address:String
     price:String
-    ratings:Int
+    ratings:Float
     image:String
 }
 
@@ -21,6 +21,13 @@ type HotelRoom{
 
 type Query{
     hotels:[Hotel]
+}
+
+type Mutation{
+    addHotel( address:String
+    price:String,
+    ratings:Float,
+    image:String):Hotel
 }
 `
 export default hotelsSchema

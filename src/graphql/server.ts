@@ -8,7 +8,7 @@ import cors from "cors"
 import rootRoute from "../routes"
 import typeDefs from "./schemas"
 import rootResolver from "./resolvers"
-import { AppContext } from "./context"
+import appContext, { AppContext } from "./context"
 
 async function startServer(app: Express, port: number) {
 	const httpServer = http.createServer(app)
@@ -27,11 +27,7 @@ async function startServer(app: Express, port: number) {
 	app.use(
 		"/graphql/:uID",
 		expressMiddleware(apolloServer, {
-			context: async ({ req, res }) => ({
-				req: req,
-				res: res,
-				uID: req?.params?.uID,
-			}),
+			context: appContext,
 		})
 	)
 	app.get("/", (req, res) => {

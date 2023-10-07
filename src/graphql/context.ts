@@ -5,4 +5,10 @@ export interface AppContext {
 	res: Response
 	uID: string
 }
-export const context = async () => {}
+const appContext = async ({ req, res }: { req: Request; res: Response }) => ({
+	req: req,
+	res: res,
+	uID: req?.params?.uID,
+})
+
+export default appContext

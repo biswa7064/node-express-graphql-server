@@ -1,4 +1,4 @@
-import { Request, Response } from "express"
+import { NextFunction, Request, Response } from "express"
 
 export interface AppContext {
 	req: Request
@@ -6,8 +6,8 @@ export interface AppContext {
 	uID: string
 }
 const appContext = async ({ req, res }: { req: Request; res: Response }) => ({
-	req: req,
-	res: res,
+	req,
+	res,
 	uID: req?.params?.uID,
 })
 

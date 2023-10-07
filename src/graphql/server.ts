@@ -9,6 +9,7 @@ import rootRoute from "../routes"
 import typeDefs from "./schemas"
 import rootResolver from "./resolvers"
 import appContext, { AppContext } from "./context"
+import { throwError } from "../middlewares"
 
 async function startServer(app: Express, port: number) {
 	const httpServer = http.createServer(app)
@@ -35,6 +36,8 @@ async function startServer(app: Express, port: number) {
 		res.send("Node Server")
 	})
 	app.use("/", rootRoute)
+
+	app.use(throwError)
 
 	httpServer.listen(process.env.PORT || port, () => {
 		console.log(`server started on ${port}!`)

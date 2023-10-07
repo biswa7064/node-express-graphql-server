@@ -3,6 +3,7 @@ import { HotelType } from "../types"
 import { AppContext } from "../graphql/context"
 import { CustomerController } from "./CustomerController"
 import { UserRole } from "../types/customerTypes"
+import { UnAuthorizedError } from "../utils/errors"
 
 const customerController = new CustomerController()
 export class HotelController {
@@ -34,7 +35,9 @@ export class HotelController {
 				customers?.find((customer) => customer?.customerID === context?.uID)
 					?.role === UserRole.ADMIN
 			if (!isValidUser) {
-				throw new Error("Not Authorized...")
+				throw new UnAuthorizedError(
+					"You are not authorized to perform this action."
+				)
 			}
 			const createInput = {
 				hotelID: random.toString() + "abcd",

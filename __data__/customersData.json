@@ -32,12 +32,14 @@
 					}
 				]
 			}
-		]
+		],
+		"role": "ADMIN"
 	},
 	{
 		"customerID": "17edc59a-7809-47af-bd82-476f6c2989c4",
 		"name": "Dalila Gumb",
 		"address": "4 Declaration Pass",
+		"role": "EMPLOYEE",
 		"bookedRooms": [
 			{
 				"roomNumber": 1,
@@ -129,6 +131,7 @@
 		"customerID": "3b28b45a-aaf1-4e54-a5ab-cf7ea1d69860",
 		"name": "Berti Winckworth",
 		"address": "46 Hagan Terrace",
+		"role": "OUTSIDER",
 		"bookedRooms": [
 			{
 				"roomNumber": 1,

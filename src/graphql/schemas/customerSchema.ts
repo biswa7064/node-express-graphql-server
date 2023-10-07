@@ -4,6 +4,13 @@ type Customer{
     name:String!
     address:String
     bookedRooms:[HotelRoom]
+    role:CustomerRole
+}
+
+enum CustomerRole{
+    ADMIN
+    EMPLOYEE
+    OUTSIDER
 }
 
 type Query{

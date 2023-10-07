@@ -1,6 +1,6 @@
 const hotelsSchema = `#graphql
 type Hotel{
-    hotelID:String!
+    hotelID:String
     address:String
     price:String
     ratings:Float
@@ -22,12 +22,15 @@ type HotelRoom{
 type Query{
     hotels:[Hotel]
 }
+input CreateHotel{
+    address:String
+    price:String
+    ratings:Float
+    image:String
+}
 
 type Mutation{
-    addHotel( address:String
-    price:String,
-    ratings:Float,
-    image:String):Hotel
+    addHotel(req:CreateHotel):Hotel
 }
 `
 export default hotelsSchema

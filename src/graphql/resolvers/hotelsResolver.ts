@@ -2,6 +2,7 @@ import { HotelController } from "../../controllers"
 import { HotelType } from "../../types"
 
 export interface HotelArgsType {
+	hotelID?: string
 	address: string
 	price: string
 	image: string

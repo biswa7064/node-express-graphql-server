@@ -1,13 +1,6 @@
 import { HotelController } from "../../controllers"
 import { HotelType } from "../../types"
-
-export interface HotelArgsType {
-	hotelID?: string
-	address: string
-	price: string
-	image: string
-	ratings: number
-}
+import { AppContext } from "../context"
 
 const hotelsController = new HotelController()
 const hotelsResolver = {
@@ -18,9 +11,13 @@ const hotelsResolver = {
 		},
 	},
 	Mutation: {
-		addHotel: async (_: HotelType, args: HotelArgsType) => {
+		addHotel: async (
+			_: HotelType,
+			args: { req: Partial<HotelType> },
+			context: AppContext
+		) => {
 			try {
-				const result = await hotelsController.addHotel(args)
+				const result = await hotelsController.addHotel(args?.req, context)
 				return result
 			} catch (error) {
 				throw error

@@ -1,5 +1,10 @@
 import { getUtf8DataFromDataDirUsingFS } from "../utils"
 import { HotelType } from "../types"
+import { AppContext } from "../graphql/context"
+import { CustomerController } from "./CustomerController"
+import { UserRole } from "../types/customerTypes"
+
+const customerController = new CustomerController()
 export class HotelController {
 	getHotelsData = async (): Promise<HotelType[]> => {
 		try {
@@ -20,10 +25,17 @@ export class HotelController {
 		}
 	}
 
-	addHotel = async (input: Partial<HotelType>) => {
+	addHotel = async (input: Partial<HotelType>, context: AppContext) => {
 		try {
 			const random = Math.floor(Math.random() * 100 + 1)
 			const hotels = await this.getHotelsData()
+			const customers = await customerController.getCustomers()
+			const isValidUser =
+				customers?.find((customer) => customer?.customerID === context?.uID)
+					?.role === UserRole.ADMIN
+			if (!isValidUser) {
+				throw new Error("Not Authorized...")
+			}
 			const createInput = {
 				hotelID: random.toString() + "abcd",
 				address: input?.address,

@@ -10,6 +10,7 @@ import typeDefs from "./schemas"
 import rootResolver from "./resolvers"
 import appContext, { AppContext } from "./context"
 import { throwError } from "../middlewares"
+import { formatError } from "../utils"
 
 async function startServer(app: Express, port: number) {
 	const httpServer = http.createServer(app)
@@ -18,6 +19,7 @@ async function startServer(app: Express, port: number) {
 		resolvers: rootResolver,
 		introspection: process.env.NODE_ENV !== "production",
 		plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+		formatError,
 	})
 
 	await apolloServer.start()

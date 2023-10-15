@@ -43,6 +43,7 @@ export class HotelController {
 				hotelID: random.toString() + "abcd",
 				address: input?.address,
 				image: input?.image,
+				price: input?.price,
 				ratings: input?.ratings,
 			} as HotelType
 			hotels.unshift(createInput)

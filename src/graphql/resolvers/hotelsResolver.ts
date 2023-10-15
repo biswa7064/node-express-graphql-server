@@ -20,7 +20,7 @@ const hotelsResolver = {
 		) => {
 			logger.info(
 				`Resolver: HotelsResolver, Mutation: addHotel, RequestBody:${JSON.stringify(
-					args.req
+					args?.req
 				)}, Add new hotel details`
 			)
 			try {

@@ -1,4 +1,3 @@
-import fs from "fs"
 import { getUtf8DataFromDataDirUsingFS } from "../utils"
 import { CustomerType } from "../types/customerTypes"
 export class CustomerController {

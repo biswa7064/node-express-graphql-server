@@ -18,7 +18,6 @@ const ERROR_CODES = Object.keys(errorStatus)?.reduce((acc, curr) => {
 }, {} as { [key in ErrorStatusKey]: string })
 
 export const formatError = (err: GraphQLFormattedError) => {
-	console.log({ err })
 	return {
 		message: err?.message,
 		error_code: err?.extensions?.code,

@@ -1,7 +1,5 @@
 import { Request, Response } from "express"
 import TodoController from "../controllers/TodoController"
-import { graphqlHTTP } from "express-graphql"
-import todoSchema from "../graphql/schemas/todoSchema"
 import { getTodoResolver } from "../graphql/resolvers/todoResolver"
 
 const todoRoute = async (

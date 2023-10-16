@@ -14,7 +14,7 @@ const hotelsResolver = {
 	},
 	Mutation: {
 		addHotel: async (
-			_: HotelType,
+			_: HotelType | null,
 			args: { req: Partial<HotelType> },
 			context: AppContext
 		) => {

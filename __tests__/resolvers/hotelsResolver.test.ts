@@ -16,13 +16,15 @@ const mockHotel: HotelType = {
 	ratings: 4.5,
 }
 
+const mockUID = "DA9C1857-E211-41A2-9eDD-0B45A874E45D"
+
 const mockAppContext: AppContext = {
 	req: jest.fn() as any,
 	res: jest.fn() as any,
-	uID: "da9c1857-e211-41a2-9edd-0b45a874e45d",
+	uID: mockUID,
 }
 const mockCustomer = {
-	customerID: "da9c1857-e211-41a2-9edd-0b45a874e45d",
+	customerID: mockUID,
 	role: "ADMIN",
 }
 
@@ -33,7 +35,7 @@ const mockHotelReq = {
 	ratings: 4.5,
 }
 
-describe(hotelsResolver.Query.hotels, () => {
+describe("hotelsResolver", () => {
 	const customerController = new CustomerController()
 	const hotelsController = new HotelController()
 	let spyFS: jest.SpyInstance
@@ -72,7 +74,7 @@ describe(hotelsResolver.Query.hotels, () => {
 	it("Should successfully add hotel details", async () => {
 		spyFS.mockReturnValue(JSON.stringify([mockCustomer]))
 		const resp = await hotelsResolver.Mutation.addHotel(
-			mockHotel,
+			null,
 			{ req: mockHotelReq },
 			mockAppContext
 		)
@@ -86,7 +88,7 @@ describe(hotelsResolver.Query.hotels, () => {
 		)
 		try {
 			await hotelsResolver.Mutation.addHotel(
-				mockHotel,
+				null,
 				{ req: mockHotelReq },
 				mockAppContext
 			)

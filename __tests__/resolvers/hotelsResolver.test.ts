@@ -18,9 +18,7 @@ const mockHotel: HotelType = {
 
 const mockUID = "DA9C1857-E211-41A2-9eDD-0B45A874E45D"
 
-const mockAppContext: AppContext = {
-	req: jest.fn() as any,
-	res: jest.fn() as any,
+const mockAppContext: AppContext = <AppContext>{
 	uID: mockUID,
 }
 const mockCustomer = {

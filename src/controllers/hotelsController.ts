@@ -6,6 +6,7 @@ import { UserRole } from "../types/customerTypes"
 import { UnAuthorizedError } from "../utils/errors"
 
 const customerController = new CustomerController()
+// update name
 export class HotelController {
 	getHotelsData = async (): Promise<HotelType[]> => {
 		try {

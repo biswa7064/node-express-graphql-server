@@ -1,13 +1,15 @@
 {
 	"name": "graphql-server",
 	"version": "1.0.0",
+	"main": "src/app.ts",
 	"scripts": {
+		"clean": "rm -rf dist",
 		"build:dev": "tsc -w --outDir dist",
 		"serve:dev": "SET NODE_ENV=development&& nodemon --watch src --exec ts-node src/app.ts",
 		"start:dev": "npm run build:dev && npm run serve:dev",
-		"build:prod": "rimraf dist && tsc",
-		"prestart": "npm run build:prod",
-		"start": "SET NODE_ENV=production&& node dist/app.js",
+		"build": "npm run clean && tsc",
+		"prestart": "npm run build",
+		"start": "node dist/src/app.js",
 		"test": "jest --coverage"
 	},
 	"license": "MIT",

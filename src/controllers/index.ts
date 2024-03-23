@@ -1,2 +1,2 @@
-export { HotelController } from "./HotelsController"
+export { HotelController } from "./hotelsController"
 export { CustomerController } from "./CustomerController"

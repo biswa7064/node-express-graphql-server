@@ -8,7 +8,6 @@
 		"serve:dev": "SET NODE_ENV=development&& nodemon --watch src --exec ts-node src/app.ts",
 		"start:dev": "npm run build:dev && npm run serve:dev",
 		"build": "npm run clean && tsc --outDir dist",
-		"prestart": "npm run build",
 		"start": "node dist/src/app.js",
 		"test": "jest --coverage"
 	},

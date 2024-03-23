@@ -6,8 +6,8 @@
 		"serve:dev": "SET NODE_ENV=development&& nodemon --watch src --exec ts-node src/app.ts",
 		"start:dev": "npm run build:dev && npm run serve:dev",
 		"build:prod": "tsc",
-		"start:prod": "node dist/app.js",
-		"prestart:prod": "npm run build:prod",
+		"prestart": "npm run build:dev",
+		"start": "SET NODE_ENV=production&& node dist/app.js",
 		"test": "jest --coverage"
 	},
 	"license": "MIT",

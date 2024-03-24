@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import { PubSub } from "graphql-subscriptions"
 
 export interface AppContext {
 	req: Request

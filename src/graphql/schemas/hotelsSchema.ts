@@ -32,5 +32,14 @@ input CreateHotel{
 type Mutation{
     addHotel(req:CreateHotel):Hotel
 }
+
+type DemoSubscription{
+    hotelID:String
+    address:String
+}
+
+type Subscription{
+    demoSubscription:DemoSubscription
+}
 `
 export default hotelsSchema

@@ -5,7 +5,7 @@ import { useServer } from "graphql-ws/lib/use/ws"
 import { makeExecutableSchema } from "@graphql-tools/schema"
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer"
 import { Express } from "express"
-import bodyParser, { json } from "body-parser"
+import { json } from "body-parser"
 import http from "http"
 import cors from "cors"
 import rootRoute from "../routes"
@@ -51,7 +51,6 @@ async function startServer(app: Express, port: number) {
 	// Graphql Entry point
 	app.use(
 		"/graphql/:uID",
-		bodyParser.json(),
 		expressMiddleware(apolloServer, {
 			context: appContext,
 		})
@@ -64,7 +63,11 @@ async function startServer(app: Express, port: number) {
 
 	app.use(throwError)
 	httpServer.listen(process.env.PORT || port, () => {
-		console.log(`server started on ${port}!`)
+		const PORT = process.env.PORT || port
+		console.log(`🚀 Query endpoint ready at http://localhost:${PORT}/graphql`)
+		console.log(
+			`🚀 Subscription endpoint ready at ws://localhost:${PORT}/graphql`
+		)
 	})
 }
 
